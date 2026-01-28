@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fee Defaulters - DataTable</title>
+
+  <!-- ✅ jQuery (FIRST) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- ✅ DataTables CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+
+  <!-- ✅ Buttons CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+  <!-- ✅ DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+
+  <!-- ✅ Buttons JS -->
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+
+  <!-- ✅ JSZip (REQUIRED for Excel) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- ✅ Excel + CSV Buttons -->
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+
+  <style>
+    body {
+      background: #f5f6fa;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    table.dataTable thead th {
+      font-size: 14px;
+      color: #666;
+    }
+
+    table.dataTable tbody td {
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .dataTables_paginate .paginate_button.current {
+      background: #003f8f !important;
+      color: #fff !important;
+      border-radius: 50% !important;
+    }
+
+    .dt-buttons .dt-button {
+      background: #6b2fa8 !important;
+      color: #fff !important;
+      border-radius: 10px;
+      border: none;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h3>Fee Defaulter's</h3>
+
+  <table id="feeTable" class="display nowrap" style="width:100%">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ✅ MANUAL DATA -->
+      <tr><td>Aariz Bin</td><td>10000</td><td>15th Dec, 2025</td></tr>
+      <tr><td>Aariz Bin</td><td>10000</td><td>15th Sep, 2025</td></tr>
+      <tr><td>Aariz Bin</td><td>10000</td><td>15th Jul, 2025</td></tr>
+      <tr><td>Abdul Aha</td><td>10000</td><td>15th Sep, 2025</td></tr>
+      <tr><td>Abdul Aha</td><td>10000</td><td>15th Jul, 2025</td></tr>
+      <tr><td>Abdul Aha</td><td>10000</td><td>14th Jul, 2025</td></tr>
+      <tr><td>Rahul Kumar</td><td>8500</td><td>10th Aug, 2025</td></tr>
+      <tr><td>Sana Khan</td><td>12000</td><td>20th Aug, 2025</td></tr>
+      <tr><td>Vihaan Reddy</td><td>9000</td><td>01st Sep, 2025</td></tr>
+      <tr><td>Ayesha Noor</td><td>15000</td><td>05th Oct, 2025</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+$(document).ready(function () {
+  $('#feeTable').DataTable({
+    pageLength: 6,
+    lengthChange: false,
+    scrollY: "260px",
+    scrollCollapse: true,
+    pagingType: "simple_numbers",
+
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        extend: 'excelHtml5',
+        text: 'Export Excel',
+        title: 'Fee_Defaulters'
+      },
+      {
+        extend: 'csvHtml5',
+        text: 'Export CSV',
+        title: 'Fee_Defaulters'
+      }
+    ],
+
+    language: {
+      paginate: {
+        previous: "‹",
+        next: "›"
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>

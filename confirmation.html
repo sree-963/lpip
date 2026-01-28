@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment Configuration</title>
+
+<style>
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #f2f2f2;
+  padding: 40px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 30px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  flex: 1.6;
+  box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.preview {
+  background: #f6f6f6;
+  border-radius: 18px;
+  padding: 30px;
+  flex: 1;
+}
+
+.preview-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  text-align: center;
+}
+
+h2 {
+  color: #003f88;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.req::after {
+  content: " *";
+  color: red;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 18px;
+}
+
+textarea { resize: vertical; }
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.row > div { flex: 1; }
+
+.radio-group {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.hidden { display: none; }
+
+.btn {
+  background: #003f88;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.link {
+  display: block;
+  margin-top: 15px;
+  color: #888;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- LEFT FORM -->
+<div class="card">
+
+<h2>Payment</h2>
+
+<div class="radio-group">
+  <label><input type="radio" name="payment" value="yes" checked> Yes</label>
+  <label><input type="radio" name="payment" value="no"> No</label>
+</div>
+
+<label class="req">Title</label>
+<input type="text" placeholder="Enter Title">
+
+<label class="req">Header</label>
+<input type="text" id="headerInput" placeholder="Enter Header">
+
+<label class="req">Description</label>
+<textarea id="descInput" placeholder="Enter Description"></textarea>
+
+<!-- FEE SECTION -->
+<div id="feeSection">
+
+  <div class="row">
+    <div>
+      <label class="req">Academic Year</label>
+      <select><option>Select Year</option></select>
+    </div>
+    <div id="amountField">
+      <label class="req">Amount</label>
+      <input type="number" placeholder="Enter Amount">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label class="req">Start Date</label>
+      <input type="date">
+    </div>
+    <div>
+      <label class="req">End Date</label>
+      <input type="date">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label class="req">Class (Current Year)</label>
+      <select><option>Select Class</option></select>
+    </div>
+    <div>
+      <label class="req">Section (Current Year)</label>
+      <select><option>Select Section</option></select>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- RIGHT PREVIEW -->
+<div class="preview">
+
+<h3 style="text-align:center; margin-bottom:15px;">Pop Up Preview</h3>
+
+<div class="preview-box">
+  <h2 id="previewHeader">Header</h2>
+  <p id="previewDesc" style="color:#666; line-height:1.5;">
+    Description will appear here
+  </p>
+
+  <button id="previewBtn" class="btn">Pay Now</button>
+  <span class="link">Remind Me Later</span>
+</div>
+
+</div>
+
+</div>
+
+<script>
+const paymentRadios = document.querySelectorAll('input[name="payment"]');
+const amountField = document.getElementById('amountField');
+const previewBtn = document.getElementById('previewBtn');
+
+const headerInput = document.getElementById('headerInput');
+const descInput = document.getElementById('descInput');
+const previewHeader = document.getElementById('previewHeader');
+const previewDesc = document.getElementById('previewDesc');
+
+// Toggle Yes / No
+paymentRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    if (radio.value === 'yes' && radio.checked) {
+      amountField.classList.remove('hidden');
+      previewBtn.textContent = "Pay Now";
+    }
+
+    if (radio.value === 'no' && radio.checked) {
+      amountField.classList.add('hidden');
+      previewBtn.textContent = "Confirm";
+    }
+  });
+});
+
+// Live Preview
+headerInput.addEventListener('input', () => {
+  previewHeader.textContent = headerInput.value || "Header";
+});
+
+descInput.addEventListener('input', () => {
+  previewDesc.textContent = descInput.value || "Description will appear here";
+});
+</script>
+
+</body>
+</html>
