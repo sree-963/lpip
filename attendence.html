@@ -38,18 +38,32 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- ✅ jQuery (FIRST) -->
 
+
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.3.6/css/dataTables.bootstrap5.css"> -->
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.6/css/dataTables.dataTables.css" />
+    <script>
+        console.log('jQuery:', typeof window.jQuery);
+        console.log('DataTable:', typeof $.fn.DataTable);
+    </script>
 
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-
-    <script src="https://cdn.datatables.net/2.3.6/js/dataTables.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#startdate").datepicker();
+            $("#enddate").datepicker();
+        });
+    </script>
 </head>
 
 <body>
@@ -102,8 +116,14 @@
                                 </a>
                             </li>
                             <li class="sidebar-submenu__item">
-                                <a href="create-course.html" class="sidebar-submenu__link">
-                                    Create Course
+                                <a href="student-enquiry.html" class="sidebar-submenu__link">
+                                    Student Enquiry
+                                </a>
+                            </li>
+
+                            <li class="sidebar-submenu__item">
+                                <a href="fees.html" class="sidebar-submenu__link">
+                                    Fees
                                 </a>
                             </li>
                         </ul>
@@ -555,338 +575,136 @@
         </div>
 
         <div class="dashboard-body pb-0">
+
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="staff-page">
                         <!-- Page Header -->
                         <div class="page-header">
-                            <h2>Student Enquiry</h2>
-
+                            <h2>Attendance</h2>
                         </div>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="tabs-container">
-                                <a href="student-enquiry.html">
-                                    <button class="tab ">
-                                        Enquiry
-                                    </button>
-                                </a>
-                                <a href="drop-reason.html">
-                                    <button class="tab  ">
-                                        Drop Reason
-                                    </button>
-                                </a>
-                                <a href="student-enquiry-settings.html">
-                                    <button class="tab ">
-                                        Settings
-                                    </button>
-                                </a>
-                                <a href="student-form-settings.html">
-                                    <button class="tab active">
-                                        Form Settings
-                                    </button>
-                                </a>
+                        <!-- Tabs -->
+                        <div class="tabs-container">
+                            <a href="attendence.html">
+                                <button class="tab active ">
+                                    Manage
+                                </button>
+                            </a>
 
-                            </div>
+                            <a href="attendence-report.html">
+                                <button class="tab ">
+                                    Report
+                                </button>
+                            </a>
 
-                            <button class="btn btn-outline-primary">Add Enquiry</button>
+                             <a href="absentee-form.html">
+                                <button class="tab ">
+                                    Absentee Form
+                                </button>
+                            </a>
+
+                             <a href="attendence-history.html">
+                                <button class="tab ">
+                                    History
+                                </button>
+                            </a>
+
+                             <a href="attendence-settings.html">
+                                <button class="tab ">
+                                   Settings
+                                </button>
+                            </a>
+
+                             <a href="attendence-rfid.html">
+                                <button class="tab ">
+                                  RFID
+                                </button>
+                            </a>
                         </div>
 
-                        <div id="London" class="">
-
-                            <div class="permission-wrapper">
-                                <table class="permission-matrix">
-                                    <thead>
-                                        <tr>
-                                            <th rowspan="2" class="left-col"></th>
-                                            <th rowspan="2" class="field-col"></th>
-
-                                            <th colspan="2"><b>Standard Form</b></th>
-                                            <th colspan="2"><b>Enquiry Link</b></th>
-                                            <th colspan="2"><b>Website / App (Guest Login)</b></th>
-                                        </tr>
-                                        <tr class="sub-head">
-                                            <th>Show</th>
-                                            <th>Required</th>
-                                            <th>Show</th>
-                                            <th>Required</th>
-                                            <th>Show</th>
-                                            <th>Required</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <!-- ================= Necessary Information ================= -->
-                                        <tr>
-                                            <td class="group" rowspan="5">Necessary<br>Information</td>
-                                            <td>Class</td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Enquiry Source</td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                            <td><input type="checkbox" checked disabled class="chk granted"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Enquiry Type</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" disabled class="chk disabled"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" disabled class="chk disabled"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" disabled class="chk disabled"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Enquiry Date</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                        </tr>
-
-                                        <tr class="section-divider">
-                                            <td>Enquiry Form No</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                        </tr>
-
-                                        <!-- ================= Student Information ================= -->
-                                        <tr>
-                                            <td class="group" rowspan="3">Student<br>Information</td>
-                                            <td>Name</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Birthday</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Gender</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                          <tr>
-                                            <td class="group" rowspan="3">Mother's<br>Information</td>
-                                            <td>Name</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                          <tr>
-                                            <td>Mother's Occupation</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                          <tr>
-                                            <td>Phone Number</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-                                    
-                                        <!-- ================= Father's Information ================= -->
-                                        <tr>
-                                            <td class="group" rowspan="4">Father's<br>Information</td>
-                                            <td>Name</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Father's Occupation</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Phone Number</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Email</td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-
-                                          <!-- ================= Father's Information ================= -->
-                                        <tr>
-                                            <td class="group" rowspan="5">Address</td>
-                                            <td>Name</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                         <tr>
-                                            <td>Current City</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                         <tr>
-                                            <td>Current State</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                         <tr>
-                                            <td>Distance From Home</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-                                         <tr>
-                                            <td>Pincode</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-
-
-                                         <tr>
-                                            <td class="group" rowspan="2">Follow Up</td>
-                                            <td>NextFollow Up</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-                                         <tr>
-                                           
-                                            <td>Comment</td>
-                                            <td><input type="checkbox" class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                            <td><input type="checkbox" checked class="chk"></td>
-                                        </tr>
-                                    </tbody>
-
-                                </table>
-
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn btn-primary mt-10 "> Save</button>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <style>
-                            td,
-                            th {
-                                border: 1px solid #ccc;
-                            }
-                        </style>
-
-                    </div>
-
-
-
-
-
-                    <div class="dashboard-footer mt-20">
-                        <div class="flex-center flex-wrap gap-16">
-                            <p class="text-gray-300 text-13 fw-normal">
-                                &copy; Copyright Little Pebbles 2025, All Right Reserverd
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
+
+
+            <!-- Tabs -->
+            <div class="d-flex justify-content-between align-items-center">
+                
+                <div class="TC">
+                    <a href="attendence.html">
+                        <button class="tab active">
+                            Student
+                        </button>
+                    </a>
+
+                    <a href="attendence-staff.html">
+                        <button class="tab">
+                            Staff
+                        </button>
+                    </a>
+
+                </div>
+            </div>
+            <div class="card mt-15">
+                <div class="row">
+                    <div class="mb-10 col-lg-4">
+                        <label class="form-label">Class <span class="text-danger">*</span> </label>
+                       
+                        <select name="" class="form-select" id="">
+                            <option value="" selected disabled>Select Class</option>
+                             <option value="">Playgroup</option>
+                             <option value="">Nursery</option>
+                        </select>
+                    </div>
+
+                     <div class="mb-10 col-lg-4">
+                        <label class="form-label">Section <span class="text-danger">*</span> </label>
+                        <select name="" class="form-select" id="">
+                            <option value="" selected disabled>Select Section</option>
+                             <option value="">Section A</option>
+                             <option value="">Section B</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-10 col-lg-4">
+                        <label class="form-label"> Date <span class="text-danger">*</span> </label>
+                        <input type="date" class="form-control">
+                    </div>
+
+                    <div class=" mt-10 d-flex gap-10 justify-content-between align-items-center">
+
+                      <div class="d-flex justify-content-center align-content-center">
+                        <button class="btn btn-primary py-13">Save</button> &nbsp; &nbsp;
+                        <button class="btn btn-outline-primary  ">Reset</button>
+                      </div>
+
+                        <div>
+                        <button class="btn btn-outline-primary">Mark All Present</button> &nbsp; &nbsp;
+                        <button class="btn btn-outline-primary">Mark All Absent</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="empty-state card">
+                <img src="https://littlepebbles.schoolbridge.in/static/media/NoAttendanceData.e74378ad.svg" alt="">
+                <h5 class=""> No Attendance Data Found</h5>
+                <p>Effortlessly manage attendance of students  <br> using this platform. </p>
+
+            </div>
+
         </div>
-    </div>
+
+
     </div>
 
     <!-- Jquery js -->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
+
+    <!-- <script src="assets/js/jquery-3.7.1.min.js"></script> -->
+
     <!-- Bootstrap Bundle Js -->
     <script src="assets/js/boostrap.bundle.min.js"></script>
     <!-- Phosphor Js -->
@@ -912,42 +730,15 @@
     <!-- main js -->
     <script src="assets/js/main.js"></script>
 
-
     <script>
-        function switchTab(tab) {
-
-            // Remove active from tabs
-            document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
-
-            // Hide panels
-            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-
-            // Activate clicked tab
-            event.target.classList.add('active');
-
-            // Show panel
-            document.getElementById(tab).classList.add('active');
-        }
-    </script>
-
-    <script>
-        new DataTable("#example");
-    </script>
-
-    <script>
-        function openChangeRequest() {
-            document.getElementById('changeRequestModal').style.display = 'flex';
+        function openReceiptModal() {
+            document.getElementById('receiptModal').style.display = 'flex';
         }
 
-        function closeChangeRequest() {
-            document.getElementById('changeRequestModal').style.display = 'none';
+        function closeReceiptModal() {
+            document.getElementById('receiptModal').style.display = 'none';
         }
-
-        document.getElementById('changeRequestModal').addEventListener('click', function (e) {
-            if (e.target === this) closeChangeRequest();
-        });
     </script>
-
 
 
 </body>

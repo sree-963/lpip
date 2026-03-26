@@ -971,24 +971,7 @@
                         </div>
 
 
-                        <script>
-                            function openCity(evt, cityName) {
-                                var i, tabcontent, tablinks;
-                                tabcontent = document.getElementsByClassName("tabcontent");
-                                for (i = 0; i < tabcontent.length; i++) {
-                                    tabcontent[i].style.display = "none";
-                                }
-                                tablinks = document.getElementsByClassName("tablinks");
-                                for (i = 0; i < tablinks.length; i++) {
-                                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                                }
-                                document.getElementById(cityName).style.display = "block";
-                                evt.currentTarget.className += " active";
-                            }
-
-                            // Get the element with id="defaultOpen" and click on it
-                            document.getElementById("defaultOpen").click();
-                        </script>
+                       
 
                     </div>
                 </div>
@@ -1771,6 +1754,26 @@
 
                 </div>
 
+                <style>
+      .view-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 10px;
+    display: inherit!important;
+    z-index: 1000;
+}
+.view-body {
+    padding: 0px;
+    overflow-y: auto;
+}
+    </style>
+
             </div>
 
             <!-- Jquery js -->
@@ -1887,9 +1890,6 @@
                     }
                 }
             </script>
-
-
-
 
 
             <script>
